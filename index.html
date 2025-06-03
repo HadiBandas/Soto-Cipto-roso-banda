@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategi Digital - Soto Cipto Roso Bandung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Lato', sans-serif; background-color: #FDFDFB; color: #3E4C59; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        .bg-brand-primary { background-color: #F4F1EA; }
+        .bg-brand-secondary { background-color: #EAE5D9; }
+        .bg-brand-accent { background-color: #D8C0A9; }
+        .text-brand-dark { color: #5D544A; }
+        .text-brand-accent { color: #A47F58; }
+        .border-brand-accent { border-color: #D8C0A9; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #A47F58; border-bottom-color: #A47F58; }
+        .tab-button { transition: all 0.3s ease; }
+        .tab-button.active { background-color: #A47F58; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .chart-container { position: relative; width: 100%; max-width: 450px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: #FDFDFB; margin: 10% auto; padding: 2rem; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 12px; animation: slide-down 0.5s ease-out; }
+        @keyframes slide-down { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-brand-primary sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl md:text-2xl font-bold text-brand-dark">Soto Cipto Roso</h1>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#analisis" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Analisis</a>
+                    <a href="#rencana" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Rencana Aksi</a>
+                    <a href="#konten" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Strategi Konten</a>
+                    <a href="#kpi" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Pengukuran</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-brand-primary py-16 md:py-24 text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Rencana Strategis & Aktivasi Digital</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Sebuah panduan interaktif untuk peluncuran sukses Soto Cipto Roso di Jl. Riau, Bandung.</p>
+            </div>
+        </section>
+
+        <section id="analisis" class="py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-brand-dark">Analisis Pasar & Audiens</h3>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Memahami lanskap kuliner Bandung dan siapa target pelanggan kita adalah kunci utama. Bagian ini menyajikan data penting tentang preferensi konsumen dan penggunaan media sosial yang akan menjadi dasar strategi kita.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <span class="text-6xl font-bold text-brand-accent">29%</span>
+                        <p class="mt-2 font-semibold">Wisatawan ke Bandung</p>
+                        <p class="text-sm text-gray-500">Menjadikan kuliner sebagai tujuan utama kunjungan mereka.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <span class="text-6xl font-bold text-brand-accent">78%</span>
+                        <p class="mt-2 font-semibold">Preferensi Konsumen</p>
+                        <p class="text-sm text-gray-500">Menyukai restoran dengan makanan dan suasana tradisional.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <span class="text-6xl font-bold text-brand-accent">18%</span>
+                        <p class="mt-2 font-semibold">Pecinta Soto</p>
+                        <p class="text-sm text-gray-500">Wisatawan kuliner di Bandung menyatakan preferensi terhadap Soto.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <span class="text-6xl font-bold text-brand-accent">50%</span>
+                        <p class="mt-2 font-semibold">Pengaruh Instagram</p>
+                        <p class="text-sm text-gray-500">Potensi peningkatan minat beli konsumen di Bandung melalui Instagram.</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold text-center text-brand-dark mb-4">Platform Media Sosial Terpopuler</h4>
+                         <p class="text-sm text-center text-gray-500 mb-4">YouTube mendominasi, namun platform visual seperti Instagram dan TikTok sangat krusial untuk menjangkau audiens target kita.</p>
+                        <div class="chart-container">
+                            <canvas id="socialMediaChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold text-center text-brand-dark mb-4">Demografi Usia Pengguna TikTok</h4>
+                        <p class="text-sm text-center text-gray-500 mb-4">Mayoritas pengguna berada di usia produktif (18-34 tahun), yang merupakan target pasar ideal untuk kampanye digital kita.</p>
+                        <div class="chart-container">
+                            <canvas id="tiktokDemographicsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rencana" class="py-16 md:py-20 bg-brand-primary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-brand-dark">Rencana Aksi Bertahap</h3>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Hari ini, 4 Juni 2025, adalah Grand Opening Soto Cipto Roso! Mari fokus pada aktivasi saat pembukaan dan strategi berkelanjutan pasca-peluncuran.</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex justify-center border-b-2 border-brand-accent mb-8">
+                        <button class="tab-button py-2 px-6 font-semibold text-gray-600" data-tab="pra-peluncuran">1. Pra-Peluncuran</button>
+                        <button class="tab-button py-2 px-6 font-semibold text-gray-600 active" data-tab="grand-opening">2. Grand Opening</button>
+                        <button class="tab-button py-2 px-6 font-semibold text-gray-600" data-tab="pasca-peluncuran">3. Pasca-Peluncuran</button>
+                    </div>
+                    <div id="pra-peluncuran" class="tab-content">
+                        <ul class="space-y-4 list-disc list-inside text-gray-700">
+                            <li><strong>Fondasi Digital:</strong> Profil Instagram, TikTok, Facebook, dan Google My Business telah dibuat & dioptimalkan.</li>
+                            <li><strong>Kampanye Teaser:</strong> Konten "Coming Soon" dengan hitung mundur telah diluncurkan.</li>
+                            <li><strong>Konten di Balik Layar:</strong> Proses pembangunan, persiapan dapur, dan cerita merek telah dibagikan.</li>
+                            <li><strong>Giveaway Pra-Buka:</strong> Undian voucher makan telah diadakan untuk menarik pengikut awal.</li>
+                            <li><strong>Iklan Bertarget Lokasi:</strong> Iklan di Instagram/TikTok menargetkan pengguna di area Bandung telah berjalan.</li>
+                        </ul>
+                    </div>
+                    <div id="grand-opening" class="tab-content active">
+                         <ul class="space-y-4 list-disc list-inside text-gray-700">
+                            <li><strong>Acara Pembukaan Meriah:</strong> Gelar acara dengan tema, hiburan musik, dan promosi khusus (diskon, BOGO) hari ini!</li>
+                            <li><strong>Kolaborasi Influencer:</strong> Undang food blogger dan influencer lokal untuk review eksklusif saat pembukaan.</li>
+                            <li><strong>Dorong User-Generated Content (UGC):</strong> Sediakan spot foto menarik (photo booth) dan promosikan hashtag unik (#SotoCiptoRosoBandung).</li>
+                            <li><strong>Live Streaming:</strong> Siarkan langsung kemeriahan acara di Instagram atau TikTok untuk menjangkau audiens yang lebih luas.</li>
+                            <li><strong>Promo Terbatas:</strong> Tawarkan menu spesial atau paket hemat yang hanya berlaku selama periode grand opening.</li>
+                        </ul>
+                    </div>
+                    <div id="pasca-peluncuran" class="tab-content">
+                         <ul class="space-y-4 list-disc list-inside text-gray-700">
+                            <li><strong>Eksekusi Strategi Konten:</strong> Jalankan pilar-pilar konten secara konsisten di semua platform mulai besok.</li>
+                            <li><strong>Manajemen Reputasi Online:</strong> Pantau dan tanggapi semua ulasan (positif/negatif) di Google, Zomato, dll. dengan cepat dan profesional.</li>
+                            <li><strong>Program Loyalitas:</strong> Perkenalkan program untuk pelanggan setia guna mendorong kunjungan berulang.</li>
+                            <li><strong>Analisis & Optimasi:</strong> Lacak KPI secara mingguan/bulanan dan sesuaikan strategi berdasarkan data kinerja.</li>
+                            <li><strong>Kolaborasi Berkelanjutan:</strong> Jalin kemitraan dengan komunitas lokal atau merek lain untuk acara atau promosi bersama.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="konten" class="py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-brand-dark">Pilar Strategi Konten</h3>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Konten adalah jantung dari komunikasi digital kita. Strategi kami berpusat pada empat pilar utama yang dirancang untuk menarik, mengedukasi, dan berinteraksi dengan audiens. Klik setiap pilar untuk detailnya.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="content-card bg-white p-6 rounded-lg shadow-lg text-center cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal="visual">
+                        <span class="text-4xl">📸</span>
+                        <h4 class="font-bold text-xl mt-4 mb-2 text-brand-dark">Visual Menggugah</h4>
+                        <p class="text-gray-500 text-sm">Menampilkan kelezatan soto dan suasana restoran melalui foto & video berkualitas tinggi.</p>
+                    </div>
+                    <div class="content-card bg-white p-6 rounded-lg shadow-lg text-center cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal="edukasi">
+                        <span class="text-4xl">📖</span>
+                        <h4 class="font-bold text-xl mt-4 mb-2 text-brand-dark">Edukasi & Cerita</h4>
+                        <p class="text-gray-500 text-sm">Membagikan cerita di balik resep, keunikan bahan, dan sejarah Soto Cipto Roso.</p>
+                    </div>
+                    <div class="content-card bg-white p-6 rounded-lg shadow-lg text-center cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal="interaktif">
+                        <span class="text-4xl">💬</span>
+                        <h4 class="font-bold text-xl mt-4 mb-2 text-brand-dark">Interaksi & Komunitas</h4>
+                        <p class="text-gray-500 text-sm">Melibatkan audiens melalui polling, Q&A, kuis, dan konten buatan pengguna (UGC).</p>
+                    </div>
+                    <div class="content-card bg-white p-6 rounded-lg shadow-lg text-center cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal="promosi">
+                        <span class="text-4xl">🎉</span>
+                        <h4 class="font-bold text-xl mt-4 mb-2 text-brand-dark">Promosi & Penawaran</h4>
+                        <p class="text-gray-500 text-sm">Menginformasikan diskon, menu spesial, dan program loyalitas secara berkala.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div id="contentModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 id="modalTitle" class="text-2xl font-bold text-brand-dark mb-4"></h3>
+                <div id="modalBody" class="text-gray-700 space-y-2"></div>
+            </div>
+        </div>
+
+        <section id="kpi" class="py-16 md:py-20 bg-brand-primary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-brand-dark">Bagaimana Kita Mengukur Keberhasilan?</h3>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Setiap tindakan harus terukur. Kami akan melacak Indikator Kinerja Utama (KPI) berikut untuk memastikan strategi kami berjalan di jalur yang benar dan memberikan hasil nyata.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-brand-dark">Tingkat Keterlibatan (Engagement Rate)</h4>
+                        <p class="text-gray-600 text-sm mt-1">Mengukur interaksi audiens (suka, komentar, bagikan) untuk menilai relevansi konten.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-brand-dark">Jangkauan & Impresi (Reach & Impressions)</h4>
+                        <p class="text-gray-600 text-sm mt-1">Melihat seberapa banyak orang unik yang melihat konten kita untuk mengukur kesadaran merek.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-brand-dark">Pertumbuhan Pengikut</h4>
+                        <p class="text-gray-600 text-sm mt-1">Melacak penambahan pengikut sebagai indikator pertumbuhan komunitas online.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-brand-dark">Lalu Lintas Situs Web (Website Traffic)</h4>
+                        <p class="text-gray-600 text-sm mt-1">Mengukur jumlah pengunjung ke situs web (jika ada) yang berasal dari media sosial.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-brand-dark">Konversi Penjualan (Sales Conversion)</h4>
+                        <p class="text-gray-600 text-sm mt-1">Menghubungkan kampanye digital dengan penjualan aktual, terutama melalui platform pesan-antar.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-brand-dark">Sentimen Merek</h4>
+                        <p class="text-gray-600 text-sm mt-1">Menganalisis ulasan dan sebutan online untuk memahami persepsi publik terhadap merek.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-dark text-white text-center py-6">
+        <p>&copy; 2024 Strategi Digital Soto Cipto Roso. Dibuat sebagai alat perencanaan.</p>
+        <p class="text-sm mt-1">Prepared by Mahasin Hadiyatulloh Email: mahasinhadiyatulloh@gmail.com</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const chartTooltip = {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed !== null) {
+                            label += context.parsed + '%';
+                        }
+                        return label;
+                    }
+                }
+            };
+
+            const socialMediaCtx = document.getElementById('socialMediaChart').getContext('2d');
+            new Chart(socialMediaCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['YouTube', 'WhatsApp', 'Facebook', 'Instagram', 'TikTok/Lainnya'],
+                    datasets: [{
+                        label: 'Penetrasi Pengguna',
+                        data: [94, 69, 65, 60, 55],
+                        backgroundColor: ['#c4302b', '#25D366', '#1877F2', '#E4405F', '#5D544A'],
+                        borderColor: '#FDFDFB',
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: chartTooltip
+                    }
+                }
+            });
+
+            const tiktokDemographicsCtx = document.getElementById('tiktokDemographicsChart').getContext('2d');
+            new Chart(tiktokDemographicsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['18-24 tahun', '25-34 tahun', '35+ tahun', '<18 tahun'],
+                    datasets: [{
+                        label: 'Persentase Pengguna',
+                        data: [42, 34, 18, 6],
+                        backgroundColor: ['#D8C0A9', '#A47F58', '#5D544A', '#EAE5D9'],
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: chartTooltip
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function(value) { return value + "%" }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Set Grand Opening tab as active by default
+            const grandOpeningTab = document.querySelector('.tab-button[data-tab="grand-opening"]');
+            const grandOpeningContent = document.getElementById('grand-opening');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            grandOpeningTab.classList.add('active');
+            tabContents.forEach(content => content.classList.remove('active'));
+            grandOpeningContent.classList.add('active');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const target = tab.getAttribute('data-tab');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            const modal = document.getElementById('contentModal');
+            const contentCards = document.querySelectorAll('.content-card');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const closeButton = document.querySelector('.close-button');
+
+            const modalData = {
+                visual: {
+                    title: '📸 Pilar Visual Menggugah',
+                    body: `<ul class="list-disc list-inside space-y-2">
+                            <li>Membuat foto dan video soto yang <strong>profesional dan menggugah selera</strong>.</li>
+                            <li>Menampilkan suasana restoran yang <strong>nyaman dan <em>Instagrammable</em></strong>.</li>
+                            <li>Merekam video <strong>di balik layar (behind-the-scenes)</strong> untuk menunjukkan kualitas dan kebersihan.</li>
+                            <li>Menggunakan format <strong>Instagram Reels dan TikTok</strong> untuk konten video pendek yang dinamis.</li>
+                           </ul>`
+                },
+                edukasi: {
+                    title: '📖 Pilar Edukasi & Cerita',
+                    body: `<ul class="list-disc list-inside space-y-2">
+                            <li>Menceritakan <strong>sejarah dan filosofi</strong> di balik nama "Soto Cipto Roso".</li>
+                            <li>Mengedukasi audiens tentang <strong>keunikan resep</strong> atau bahan-bahan pilihan.</li>
+                            <li>Membuat konten yang menjelaskan perbedaan soto Bandung dengan soto dari daerah lain.</li>
+                            <li>Menampilkan <strong>profil singkat dari chef atau pendiri</strong> untuk sentuhan personal.</li>
+                           </ul>`
+                },
+                interaktif: {
+                    title: '💬 Pilar Interaksi & Komunitas',
+                    body: `<ul class="list-disc list-inside space-y-2">
+                            <li>Mengadakan <strong>sesi Tanya Jawab (Q&A)</strong> dengan chef atau tim.</li>
+                            <li>Membuat <strong>polling atau kuis</strong> di Instagram Stories terkait kuliner.</li>
+                            <li>Menjalankan <strong>kontes User-Generated Content (UGC)</strong> dengan hadiah menarik.</li>
+                            <li>Secara rutin <strong>menampilkan kembali (repost)</strong> konten dari pelanggan untuk membangun komunitas.</li>
+                           </ul>`
+                },
+                promosi: {
+                    title: '🎉 Pilar Promosi & Penawaran',
+                    body: `<ul class="list-disc list-inside space-y-2">
+                            <li>Mengumumkan <strong>diskon, paket bundling, atau promo hari tertentu</strong>.</li>
+                            <li>Memperkenalkan <strong>program loyalitas</strong> untuk pelanggan setia.</li>
+                            <li>Berkolaborasi dengan platform pesan-antar (GoFood, GrabFood) untuk <strong>promo eksklusif</strong>.</li>
+                            <li>Menawarkan <strong>penawaran spesial</strong> untuk pengikut media sosial.</li>
+                           </ul>`
+                }
+            };
+            
+            contentCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const modalId = card.getAttribute('data-modal');
+                    const data = modalData[modalId];
+                    modalTitle.textContent = data.title;
+                    modalBody.innerHTML = data.body;
+                    modal.style.display = 'block';
+                });
+            });
+
+            closeButton.onclick = function() {
+                modal.style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
